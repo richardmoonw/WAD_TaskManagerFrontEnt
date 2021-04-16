@@ -1,38 +1,74 @@
-.App {
+.mobileContainer {
+  margin: 2rem;
   text-align: center;
+  font-family: 'Helvetica';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mobileLogo {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mobileTitle {
+  font-size: 1.65rem;
+  color: #3d5a80;
+  margin-top: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.mobileImage {
+  width: 100%;
+  padding: 0;
+  margin: -1rem 0 -1rem 0;
+}
+
+.mobileSubtitle {
+  font-size: 1.65rem;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+
+.mobileDivision {
+  border: 0.1rem solid #3d5a80;
+  background-color: #3d5a80;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.mobileText {
+  color: #717786;
+  line-height: 1.3rem;
+}
+
+.mobileLoginButton {
+  width: 90%;
+  padding: 0.8rem;
+  margin-top: 3%;
+  background-color: #ee6c4d;
   color: white;
+  border-radius: 3rem;
+  border: none;
+  box-shadow: 0rem 0.25rem 0.5rem rgba(238, 108, 77, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.mobileLoginButtonIcon {
+  font-size: 0.85rem;
+  margin-right: 1rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mobileLoginButtonText {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.mobileContact {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.mobileUser {
+  font-weight: bolder;
+  color: #08a0e9;
 }
