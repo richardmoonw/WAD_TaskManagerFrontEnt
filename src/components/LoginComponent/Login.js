@@ -1,14 +1,14 @@
-import { Grid, Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { AiFillGoogleCircle } from 'react-icons/ai';
-import './App.css'
-import Logo from './assets/logo.png';
-import MobileImage from './assets/index_image.png';
-import DesktopImage from './assets/index_image_desktop.jpg';
+import './Login.css'
+import Logo from '../../assets/logo.png';
+import MobileImage from '../../assets/index_image.png';
+import DesktopImage from '../../assets/index_image_desktop.jpg';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 
-const App = () => {
+const Login = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1366px)'
   });
@@ -28,7 +28,7 @@ const App = () => {
         </Grid>
         <Grid className="desktopContentContainer" container spacing={3}>
           <Grid className="leftColumn" item md={7} lg={7} xl={7}>
-            <img className="desktopImage" src={DesktopImage}></img>
+            <img className="desktopImage" src={DesktopImage} alt="management"></img>
           </Grid>
           <Grid className="rightColumn" item md={4} lg={4} xl={4}>
             <p className="desktopTitle">Convierte tus proyectos en algo realmente mágico.</p> 
@@ -74,4 +74,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Login;
