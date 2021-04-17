@@ -20,7 +20,7 @@ const Login = () => {
   return (
     <>
       { isDesktopOrLaptop && 
-      <div className="desktopContainer">
+      <div className="desktopContainerLogin">
         <Grid container spacing={3}>
           <Grid item md={2} lg={2} xl={2}>
             <img className="desktopLogo" src={Logo} alt="loopy"></img>

@@ -1,0 +1,28 @@
+.navbarContainer {
+  padding-bottom: 1.5rem;
+}
+
+.logo {
+  width: 100%;
+}
+
+.topPanel {
+  margin-top: 1rem;
+}
+
+.formattedLink {
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.buttonContainer {
+  text-align: right;
+}
+
+.navbarButton {
+  width: 30%;
+}
+
+.buttonIcon {
+  color: white;
+}
