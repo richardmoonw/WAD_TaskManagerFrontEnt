@@ -10,11 +10,11 @@ import { useMediaQuery } from 'react-responsive';
 
 const Login = () => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1366px)'
+    query: '(min-width: 1366px)'
   });
 
   const isTabletOrSmartphone = useMediaQuery({
-    query: '(max-device-width: 1355px'
+    query: '(max-width: 1355px'
   });
 
   return (

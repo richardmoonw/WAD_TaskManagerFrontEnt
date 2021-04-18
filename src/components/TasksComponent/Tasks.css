@@ -23,6 +23,15 @@
 }
 
 
+/* TaskComponent. MOBILE CLASSES */
+.mobileContainer {
+    margin: 2rem;
+    font-family: 'Helvetica';
+    align-items: center;
+}
+
+
+
 /* Column Component. DESKTOP CLASSES */
 .columnContainer {
     padding: 1rem;

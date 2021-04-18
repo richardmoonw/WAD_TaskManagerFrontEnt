@@ -11,11 +11,11 @@ const Tasks = () => {
   const[open, setOpen] = useState(false);
 
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1366px)'
+    query: '(min-width: 1366px)'
   });
 
   const isTabletOrSmartphone = useMediaQuery({
-    query: '(max-device-width: 1355px'
+    query: '(max-width: 1355px)'
   });
 
   return (
@@ -46,7 +46,6 @@ const Tasks = () => {
                   color="#969696"
                   tickets={[{ id: 1, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }, { id: 3, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }]}
                   project_id={"1"}
-                  employee_id={"2"}
                 ></Column>
 
                 {/* Dev column */}
@@ -55,7 +54,6 @@ const Tasks = () => {
                   color="#8c8eff"
                   tickets={[{ id: 2, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
                   project_id={"1"}
-                  employee_id={"2"}
                 ></Column>
 
                 {/* In progress column */}
@@ -64,7 +62,6 @@ const Tasks = () => {
                   color="#ff8c90"
                   tickets={[{ id: 4, title: "Hello", description: "Hello World", priority: "High", end_at: "04/16/2021" }]}
                   project_id={"1"}
-                  employee_id={"2"}
                 ></Column>
 
                 {/* Done column */}
@@ -73,7 +70,6 @@ const Tasks = () => {
                   color="#63db81"
                   tickets={[{ id: 5, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
                   project_id={"1"}
-                  employee_id={"2"}
                 ></Column>
               </Grid>
             </Grid>
@@ -86,7 +82,10 @@ const Tasks = () => {
       }
 
       {/* Mobile design */}
-      { isTabletOrSmartphone && <p>Hello perro</p>
+      { isTabletOrSmartphone && 
+        <div className="mobileContainer">
+          <Navbar/>
+        </div>
       }
     </>
   );
