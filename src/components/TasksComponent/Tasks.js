@@ -83,9 +83,7 @@ const Tasks = () => {
 
       {/* Mobile design */}
       { isTabletOrSmartphone && 
-        <div className="mobileContainer">
-          <Navbar/>
-        </div>
+        <Navbar/>
       }
     </>
   );

@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { AiOutlineAppstore } from "react-icons/ai";
+import { BiMenu } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import Logo from '../../assets/logo.png';
 
 const Navbar = () => {
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 1366px)'
@@ -16,19 +20,27 @@ const Navbar = () => {
   const isTabletOrSmartphone = useMediaQuery({
     query: '(max-width: 1355px)'
   });
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   
   return(
     <>
       { isDesktopOrLaptop && 
         <Grid className="navbarContainer" container>
           {/* Empty space at the left */}
-          <Grid item xs={1} md={1}></Grid>
+          <Grid item md={1}></Grid>
 
           {/* Brand container */}
           <Grid item md={11}>
             <Grid className="topPanel" container>
               <Grid item md={1}>
-                <Link className="formattedLink" to="/">
+                <Link to="/">
                   <img className="logo" src={Logo} alt="loopy"></img>
                 </Link>
               </Grid>
@@ -57,36 +69,44 @@ const Navbar = () => {
       }
 
       { isTabletOrSmartphone &&
-        <Grid className="mobileContainer" container>
-
-          {/* Brand container */}
-          <Grid item md={11}>
-            <Grid className="topPanel" container>
-              <Grid item md={1}>
-                <Link className="formattedLink" to="/">
-                  <img className="logo" src={Logo} alt="loopy"></img>
+        <Grid className="mobileNavbarContainer" container>
+          <Grid item xs={5}>
+            <Link to="/">
+              <img className="logo" src={Logo} alt="loopy"></img>
+            </Link>
+          </Grid>
+          <Grid className="routesContainer" item xs={6}>
+            <IconButton
+              aria-label="more"
+              onClick={handleClick}
+            >
+              <BiMenu />
+            </IconButton>
+            <Menu
+              open={open}
+              anchorEl={anchorEl}
+              keepMounted
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  width: '40%',
+                  position: 'absolute'
+                },
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link className="mobileFormattedLink" to="/projects">
+                <AiOutlineAppstore className="mobileRouteIcon"/>
+                 Projects
                 </Link>
-              </Grid>
-              <Grid item md={5}></Grid>
-              <Grid className="buttonContainer" item md={5}>
-                <Link className="formattedLink" to="/projects">
-                  <Button
-                    className="navbarButton" 
-                    variant="contained"
-                    color="primary"
-                    startIcon={<AiOutlineAppstore className="buttonIcon" />}
-                    >Projects</Button>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link className="mobileFormattedLink" to="/">
+                <FiLogOut className="mobileRouteIcon"/>
+                 Sign Out
                 </Link>
-                <Link className="formattedLink" to="/">
-                  <Button 
-                    className="navbarButton" 
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<FiLogOut className="buttonIcon" />}
-                    >Sign Out</Button>
-                </Link>
-              </Grid>
-            </Grid>
+              </MenuItem>
+            </Menu>
           </Grid>
         </Grid>
       }

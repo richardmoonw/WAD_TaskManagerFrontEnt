@@ -1,3 +1,4 @@
+/* DESKTOP CLASSES */
 .navbarContainer {
   padding-bottom: 1.5rem;
 }
@@ -25,4 +26,25 @@
 
 .buttonIcon {
   color: white;
+}
+
+/* MOBILE CLASSES */
+.mobileNavbarContainer {
+  margin: 1rem;
+  font-family: 'Helvetica';
+  align-items: center;
+}
+
+.routesContainer {
+  text-align: right;
+}
+
+.mobileFormattedLink {
+  text-decoration: none;
+}
+
+.mobileRouteIcon {
+  margin: 0.2rem 0.3rem 0 0;
+  font-size: 1rem;
+  color: black;
 }
