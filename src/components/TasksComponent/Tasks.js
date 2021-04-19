@@ -90,10 +90,10 @@ const Tasks = () => {
           <div className="mobileBackgroundComponent">
             <div className="mobileTasksComponent">
               <Grid container>
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <p className="title">Title</p>
                 </Grid>
-                <Grid className="centeredContainer" item xs={1}>
+                <Grid style={{textAlign: "right"}} item xs={1}>
                   <IconButton className="addButton" onClick={() => setOpen(true)}>
                     <IoAddOutline />
                   </IconButton>

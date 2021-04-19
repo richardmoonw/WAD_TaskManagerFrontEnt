@@ -75,7 +75,8 @@ const Navbar = () => {
               <img className="logo" src={Logo} alt="loopy"></img>
             </Link>
           </Grid>
-          <Grid className="routesContainer" item xs={8}>
+          <Grid item xs={8}></Grid>
+          <Grid className="routesContainer" item xs={1}>
             <IconButton
               onClick={handleClick}
             >
