@@ -13,11 +13,11 @@ const Tasks = () => {
   const[open, setOpen] = useState(false);
 
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1366px)'
+    minDeviceWidth: 1366
   });
 
   const isTabletOrSmartphone = useMediaQuery({
-    query: '(max-width: 1355px)'
+    maxDeviceWidth: 1365
   });
 
   const handleStatus = (event) => {

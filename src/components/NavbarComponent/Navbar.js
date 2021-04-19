@@ -14,11 +14,11 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
 
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1366px)'
+    minDeviceWidth: 1366
   });
 
   const isTabletOrSmartphone = useMediaQuery({
-    query: '(max-width: 1355px)'
+    maxDeviceWidth: 1365
   });
 
   const handleClick = (event) => {
