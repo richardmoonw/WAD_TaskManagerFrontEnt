@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Column from './Column';
 import Navbar from '../NavbarComponent/Navbar';
-import { Grid, IconButton } from '@material-ui/core';
+import { FormControl, Grid, IconButton, MenuItem, InputLabel, Select } from '@material-ui/core';
 import { IoAddOutline } from "react-icons/io5";
 import './Tasks.css';
 import { useMediaQuery } from 'react-responsive';
 import CreateTicket from './CreateTicket';
 
 const Tasks = () => {
+
+  const[status, setStatus] = useState("backlog")
   const[open, setOpen] = useState(false);
 
   const isDesktopOrLaptop = useMediaQuery({
@@ -17,6 +19,10 @@ const Tasks = () => {
   const isTabletOrSmartphone = useMediaQuery({
     query: '(max-width: 1355px)'
   });
+
+  const handleStatus = (event) => {
+    setStatus(event.target.value);
+  };
 
   return (
     <>
@@ -74,17 +80,85 @@ const Tasks = () => {
               </Grid>
             </Grid>
           </Grid>
-          <CreateTicket
-            open={open}
-            setOpen={setOpen}>
-          </CreateTicket>
         </div>
       }
 
       {/* Mobile design */}
       { isTabletOrSmartphone && 
-        <Navbar/>
+        <>
+          <Navbar/>
+          <div className="mobileBackgroundComponent">
+            <div className="mobileTasksComponent">
+              <Grid container>
+                <Grid item xs={10}>
+                  <p className="title">Title</p>
+                </Grid>
+                <Grid className="centeredContainer" item xs={1}>
+                  <IconButton className="addButton" onClick={() => setOpen(true)}>
+                    <IoAddOutline />
+                  </IconButton>
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item xs={6}>
+                  <FormControl className="statusPicker">
+                    <InputLabel shrink id="status-label">Status</InputLabel>
+                    <Select
+                      labelId="status-label"
+                      value={status}
+                      onChange={handleStatus}
+                    >
+                      <MenuItem value="backlog">Backlog</MenuItem>
+                      <MenuItem value="dev">Selected for dev</MenuItem>
+                      <MenuItem value="doing">Doing</MenuItem>
+                      <MenuItem value="done">Done</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </Grid>
+
+              <Grid container>
+                { status==="backlog" &&
+                  <Column
+                    col_title='Backlog'
+                    color="#969696"
+                    tickets={[{ id: 1, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }, { id: 3, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }]}
+                    project_id={"1"}
+                  />
+                }
+                { status==="dev" &&
+                  <Column
+                    col_title='Selected for development'
+                    color="#8c8eff"
+                    tickets={[{ id: 2, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
+                    project_id={"1"}
+                  ></Column>
+                }
+                { status==="doing" &&
+                  <Column
+                    col_title='In progress'
+                    color="#ff8c90"
+                    tickets={[{ id: 4, title: "Hello", description: "Hello World", priority: "High", end_at: "04/16/2021" }]}
+                    project_id={"1"}
+                  ></Column>
+                }
+                { status==="done" &&
+                  <Column
+                    col_title='Done'
+                    color="#63db81"
+                    tickets={[{ id: 5, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
+                    project_id={"1"}
+                  ></Column>
+                }
+              </Grid>
+            </div>
+          </div>   
+        </>
       }
+      <CreateTicket
+        open={open}
+        setOpen={setOpen}>
+      </CreateTicket>
     </>
   );
 }

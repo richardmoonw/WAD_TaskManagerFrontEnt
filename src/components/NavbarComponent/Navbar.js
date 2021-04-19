@@ -70,14 +70,13 @@ const Navbar = () => {
 
       { isTabletOrSmartphone &&
         <Grid className="mobileNavbarContainer" container>
-          <Grid item xs={5}>
+          <Grid item xs={3}>
             <Link to="/">
               <img className="logo" src={Logo} alt="loopy"></img>
             </Link>
           </Grid>
-          <Grid className="routesContainer" item xs={6}>
+          <Grid className="routesContainer" item xs={8}>
             <IconButton
-              aria-label="more"
               onClick={handleClick}
             >
               <BiMenu />
@@ -87,12 +86,6 @@ const Navbar = () => {
               anchorEl={anchorEl}
               keepMounted
               onClose={handleClose}
-              PaperProps={{
-                style: {
-                  width: '40%',
-                  position: 'absolute'
-                },
-              }}
             >
               <MenuItem onClick={handleClose}>
                 <Link className="mobileFormattedLink" to="/projects">

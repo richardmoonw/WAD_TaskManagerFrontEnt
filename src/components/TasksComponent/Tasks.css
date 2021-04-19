@@ -22,7 +22,7 @@
     margin-top: 1.5rem !important;
 }
 
-/* Column Component. DESKTOP CLASSES */
+/* ColumnComponent. DESKTOP CLASSES */
 .columnContainer {
     padding: 1rem;
 }
@@ -38,7 +38,7 @@
 }
 
 
-/* CreateTicket and EditTicket Components. DESKTOP CLASSES */
+/* CreateTicketComponent and EditTicketComponent. DESKTOP CLASSES */
 .formContainer {
     font-family: Helvetica;
 }
@@ -94,7 +94,7 @@
 }
   
 
-/* Ticket Component. DESKTOP CLASSES */
+/* TicketComponent. DESKTOP CLASSES */
 .ticketContainer {
 	font-family: Helvetica;
     width: 100%;
@@ -165,4 +165,28 @@
 
 .ticketDueDate {
 	text-align: right;
+}
+
+/* -------------------------------------------------------------------------------- */
+
+/* TasksComponent. MOBILE CLASSES */
+
+.mobileBackgroundComponent {
+    margin: 0 !important;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.mobileTasksComponent {
+    margin: 1rem;
+}
+
+.statusPicker {
+    margin-top: 0rem !important;
+    width: 100%;
+}
+
+/* ColumnComponent. MOBILE CLASSES */
+.mobileTicketsContainer {
+    margin-top: 1rem !important;
 }

@@ -13,10 +13,10 @@ const Ticket = (props) => {
 
           {/* Header */}
           <Grid container alignItems='center'>
-            <Grid item md={5}>
+            <Grid item xs={5} md={5}>
               <span className="ticketField">ID-{props.ticket.id}</span>
             </Grid>
-            <Grid container item md={7} alignItems="center" justify="flex-end">
+            <Grid container item xs={7} md={7} alignItems="center" justify="flex-end">
               <Grid item>
                 <button onClick={() => setOpen(true)} className="ticketButton">EDIT</button>
               </Grid>
@@ -33,7 +33,7 @@ const Ticket = (props) => {
             <p className="ticketDescription">{props.ticket.description}</p>
 
             <Grid container>
-              <Grid item md={3}>
+              <Grid item xs={3} md={3}>
                 { props.ticket.priority === "High" &&
                   <p className="highPriorityLabel">High</p>
                 }
@@ -44,7 +44,7 @@ const Ticket = (props) => {
                   <p className="lowPriorityLabel">Low</p>
                 }
               </Grid>
-              <Grid item md={9}>
+              <Grid item xs={9} md={9}>
                 <p className="ticketDueDate"><span className="ticketField ticketDate">DUE DATE:</span> {props.ticket.end_at}</p>
               </Grid>
             </Grid>
