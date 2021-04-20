@@ -6,7 +6,7 @@ import { Grid, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { AiOutlineAppstore } from "react-icons/ai";
 import { BiMenu } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo.webp';
 
 const Navbar = () => {
 

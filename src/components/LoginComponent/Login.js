@@ -1,9 +1,9 @@
 import { Grid } from '@material-ui/core';
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import './Login.css'
-import Logo from '../../assets/logo.png';
-import MobileImage from '../../assets/index_image.png';
-import DesktopImage from '../../assets/index_image_desktop.jpg';
+import Logo from '../../assets/logo.webp';
+import MobileImage from '../../assets/index_image.webp';
+import DesktopImage from '../../assets/index_image_desktop.webp';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
