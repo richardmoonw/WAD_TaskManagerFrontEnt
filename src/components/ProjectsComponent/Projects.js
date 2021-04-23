@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Navbar from '../NavbarComponent/Navbar';
+import { IoAddOutline } from "react-icons/io5";
 import { FormControl, Container,Grid, IconButton, MenuItem, InputLabel, Select } from '@material-ui/core';
 import './Projects.css';
 import ProjectCard from './ProjectCard';
@@ -26,6 +27,16 @@ const Projects = () => {
                 <Grid container>
                     <Grid item md={1}></Grid>
                     <Grid item md={10}>
+                        <Grid container>
+                            <Grid item md={11}>
+                                <p className="title">Projects</p>
+                            </Grid>
+                            <Grid className="centeredContainer" item md={1}>
+                                <IconButton className="addButton" onClick={() => setOpen(true)}>
+                                    <IoAddOutline />
+                                </IconButton>
+                            </Grid>
+                        </Grid>
                         <Grid className="projectsRow" container>
                             <Grid item md={4}>
                                 <ProjectCard className="card" />

@@ -57,4 +57,17 @@
 
 .card {
   width: 100% !important;
+  max-width: 1000% !important;
+}
+
+.centeredContainer {
+    text-align: center;
+}
+
+.addButton {
+    margin-top: 1.5rem !important;
+}
+
+.title {
+    font-size: 2rem;
 }

@@ -59,7 +59,6 @@ export default function ProjectCard() {
       <CardMedia
         className={classes.media}
         image={Logo}
-        title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
