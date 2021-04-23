@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/LoginComponent/Login';
-import Tasks from './components/TasksComponent/Tasks'
+import Tasks from './components/TasksComponent/Tasks';
+import Projects from './components/ProjectsComponent/Projects';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -15,6 +16,9 @@ ReactDOM.render(
         </Route>
         <Route exact path="/tasks">
           <Tasks/>
+        </Route>
+        <Route exact path="/projects">
+          <Projects/>
         </Route>
       </Switch>
     </BrowserRouter>
