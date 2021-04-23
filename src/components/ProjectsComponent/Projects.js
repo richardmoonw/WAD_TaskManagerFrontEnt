@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { FormControl, Grid, IconButton, MenuItem, InputLabel, Select } from '@material-ui/core';
+import Navbar from '../NavbarComponent/Navbar';
+import { FormControl, Container,Grid, IconButton, MenuItem, InputLabel, Select } from '@material-ui/core';
 import './Projects.css';
 import ProjectCard from './ProjectCard';
 
@@ -18,26 +19,52 @@ const Projects = () => {
 
     return(
         <>
-        
-            <div className="desktopContainer columnsContainer">
-                <div className="gridContainer">
-                    <h1>Text</h1>
-                    <h1>Text</h1>
-                    <h1>Text</h1>
-                    <h1>Text</h1>
-                    <h1>Text</h1>
-                    <h1>Text</h1>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                </div>
+        { isDesktopOrLaptop && 
+        <div className="desktopContainer">
+            <Navbar module="projects" />
+            <div className="columnsContainer">
+                <Grid container>
+                    <Grid item md={1}></Grid>
+                    <Grid item md={10}>
+                        <Grid className="projectsRow" container>
+                            <Grid item md={4}>
+                                <ProjectCard className="card" />
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                        </Grid>
+                        <Grid className="projectsRow" container>
+                            <Grid item md={4}>
+                                <ProjectCard className="card" />
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                        </Grid>
+                        <Grid className="projectsRow" container>
+                            <Grid item md={4}>
+                                <ProjectCard className="card" />
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <ProjectCard/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </div>
+        </div>
+        }
+        
 
         
         </>

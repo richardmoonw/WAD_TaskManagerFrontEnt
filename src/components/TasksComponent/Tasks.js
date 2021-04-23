@@ -28,7 +28,7 @@ const Tasks = () => {
     <>
       { isDesktopOrLaptop &&
         <div className="desktopContainer">
-          <Navbar />
+          <Navbar module="tasks" />
           <Grid className="columnsContainer" container>
             <Grid item md={1}></Grid>
             <Grid item md={10}>
@@ -86,7 +86,7 @@ const Tasks = () => {
       {/* Mobile design */}
       { isTabletOrSmartphone && 
         <>
-          <Navbar/>
+          <Navbar module="tasks" />
           <div className="mobileBackgroundComponent">
             <div className="mobileTasksComponent">
               <Grid container>

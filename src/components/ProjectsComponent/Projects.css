@@ -50,3 +50,11 @@
 .ticketButton:hover {
 	background-color: #eee;
 }
+
+.projectsRow {
+  margin: 1rem 0 1.5rem 0;
+}
+
+.card {
+  width: 100% !important;
+}

@@ -8,7 +8,7 @@ import { BiMenu } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import Logo from '../../assets/logo.webp';
 
-const Navbar = () => {
+const Navbar = ({module}) => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -46,14 +46,28 @@ const Navbar = () => {
               </Grid>
               <Grid item md={5}></Grid>
               <Grid className="buttonContainer" item md={5}>
-                <Link className="formattedLink" to="/projects">
-                  <Button
-                    className="navbarButton" 
-                    variant="contained"
-                    color="primary"
-                    startIcon={<AiOutlineAppstore className="buttonIcon" />}
-                    >Projects</Button>
-                </Link>
+                { module == "tasks" &&
+                    <Link className="formattedLink" to="/projects">
+                      <Button
+                        className="navbarButton" 
+                        variant="contained"
+                        color="primary"
+                        startIcon={<AiOutlineAppstore className="buttonIcon" />}
+                        >Projects</Button>
+                    </Link>
+                }
+              
+                { module == "projects" && 
+                    <Link className="formattedLink" to="/tasks">
+                      <Button
+                        className="navbarButton" 
+                        variant="contained"
+                        color="primary"
+                        startIcon={<AiOutlineAppstore className="buttonIcon" />}
+                        >Tasks</Button>
+                    </Link>
+                    
+                }
                 <Link className="formattedLink" to="/">
                   <Button 
                     className="navbarButton" 
@@ -89,10 +103,18 @@ const Navbar = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
+                { module == "tasks" &&
                 <Link className="mobileFormattedLink" to="/projects">
-                <AiOutlineAppstore className="mobileRouteIcon"/>
-                 Projects
+                  <AiOutlineAppstore className="mobileRouteIcon"/>
+                  Projects
                 </Link>
+                }
+                { module == "projects" && 
+                <Link className="mobileFormattedLink" to="/tasks">
+                  <AiOutlineAppstore className="mobileRouteIcon"/>
+                  Tasks
+                </Link>
+                }
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link className="mobileFormattedLink" to="/">
