@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, MenuItem, InputLabel, FormControl, Select } from '@material-ui/core';
+import { MenuItem, InputLabel, FormControl, Select } from '@material-ui/core';
 
 const DropMenu = ({title, items}) => {
   return(

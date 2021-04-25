@@ -46,7 +46,7 @@ const Navbar = ({module}) => {
               </Grid>
               <Grid item md={5}></Grid>
               <Grid className="buttonContainer" item md={5}>
-                { module == "tasks" &&
+                { module === "tasks" &&
                     <Link className="formattedLink" to="/projects">
                       <Button
                         className="navbarButton" 
@@ -57,7 +57,7 @@ const Navbar = ({module}) => {
                     </Link>
                 }
               
-                { module == "projects" && 
+                { module === "projects" && 
                     <Link className="formattedLink" to="/tasks">
                       <Button
                         className="navbarButton" 
@@ -103,13 +103,13 @@ const Navbar = ({module}) => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                { module == "tasks" &&
+                { module === "tasks" &&
                 <Link className="mobileFormattedLink" to="/projects">
                   <AiOutlineAppstore className="mobileRouteIcon"/>
                   Projects
                 </Link>
                 }
-                { module == "projects" && 
+                { module === "projects" && 
                 <Link className="mobileFormattedLink" to="/tasks">
                   <AiOutlineAppstore className="mobileRouteIcon"/>
                   Tasks
