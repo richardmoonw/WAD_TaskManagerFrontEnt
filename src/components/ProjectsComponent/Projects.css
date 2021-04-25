@@ -51,13 +51,10 @@
 	background-color: #eee;
 }
 
-.projectsRow {
-  margin: 1rem 0 1.5rem 0;
-}
-
 .card {
+  margin: 0.5rem 0 0.5rem 0;
   width: 100% !important;
-  max-width: 1000% !important;
+  min-width: 100% !important;
 }
 
 .centeredContainer {
@@ -70,4 +67,69 @@
 
 .title {
     font-size: 2rem;
+}
+
+.formContainer {
+  font-family: Helvetica;
+}
+
+.titleContainer {
+  text-align: center;
+  padding: 1.5rem 0 1.5rem 0;
+  border-bottom: 0.1rem solid lightgray;
+}
+
+.titleVariant1 {
+  margin-top: 0rem;
+  color: #fc7272;
+}
+
+.titleVariant2 {
+  margin-top: 0rem;
+  color: #607afc;
+}
+
+.centeredContainer {
+  text-align: center;
+}
+
+.formattedDialogContent {
+  background-color: #f9f9f9;
+}
+
+.fieldInformation {
+  margin: 1.2rem 0 1rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.formattedTextField {
+  width: 100%;
+  margin-bottom: 2rem !important;
+}
+
+.optionButton {
+  margin: 1rem 0 1.5rem 0 !important;
+  width: 90%;
+  height: 1.5rem import !important;
+}
+
+.formattedDropdown {
+  width: 100%;
+}
+
+.formattedDatePicker {
+  margin-top: 0;
+  width: 100%;
+}
+
+/*Mobile Components*/
+.mobileBackgroundComponent {
+  margin: 0 !important;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.mobileProjectsComponent {
+  margin: 1rem;
 }

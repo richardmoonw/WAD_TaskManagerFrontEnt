@@ -1,62 +1,18 @@
 import React, { useState } from 'react';
 import 'date-fns';
-import './Tasks.css';
+import './Projects.css';
 import { Dialog, DialogContent, Button, Grid, IconButton, TextField, DialogTitle } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { GrClose } from "react-icons/gr";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import DropMenu from './DropMenu';
 
-const priorityItems = [
-  {
-    id: 1,
-    name: 'High'
-  },
-  {
-    id: 2,
-    name: 'Medium'
-  },
-  {
-    id: 3,
-    name: 'Low'
-  },
-]
+const EditProject = ({ open, setOpen, project }) => {
 
-const statusItems = [
-  {
-    id: 1,
-    name: 'Backlog'
-  },
-  {
-    id: 2,
-    name: 'Selected for development'
-  },
-  {
-    id: 3,
-    name: 'In progress'
-  },
-  {
-    id: 4,
-    name: 'Done'
-  },
-]
-
-const EditTicket = ({ open, setOpen, ticket }) => {
-
-  const [title, setTitle] = useState(ticket.title);
-  const [description, setDescription] = useState(ticket.description);
-  const [priority, setPriority] = useState(priorityItems.find(x => x === ticket.priority));
-  const [status, setStatus] = useState(statusItems.find(x => x === ticket.status));
-  const [date, setDate] = useState(ticket.end_at);
-
-  const changePriority = (value) => {
-    setPriority(value)
-  }
-
-  const changeStatus = (value) => {
-    setStatus(value)
-  }
+  const [title, setTitle] = useState(project.title);
+  const [description, setDescription] = useState(project.description);
+  const [image, setImage] = useState(project.image);
+  const [date, setDate] = useState(project.date);
 
   const close = () => {
     setOpen(false);
@@ -75,12 +31,12 @@ const EditTicket = ({ open, setOpen, ticket }) => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={12} md={12}>
-            <IoCloudUploadOutline className="title titleVariant2"/>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <p className="title titleVariant2">Update Ticket</p>
-          </Grid>
+            <Grid item xs={12} md={12}>
+                <IoCloudUploadOutline className="title titleVariant2"/>
+            </Grid>
+            <Grid item xs={12} md={12}>
+                <p className="title titleVariant2">Update Project</p>
+            </Grid>
         </Grid>
       </DialogTitle>
 
@@ -88,12 +44,12 @@ const EditTicket = ({ open, setOpen, ticket }) => {
       <DialogContent className="formattedDialogContent">
         <Grid container>
           <Grid item xs={12} md={12}>
-            <p className="fieldInformation">TICKET INFORMATION</p>
+            <p className="fieldInformation">PROJECT INFORMATION</p>
           </Grid>
           <Grid item xs={12} md={12}>
             <TextField className="formattedTextField"
               id="title"
-              label="Name"
+              label="Project Name"
               variant="outlined"
               inputProps={{ maxLength: 120 }}
               value={title}
@@ -112,11 +68,17 @@ const EditTicket = ({ open, setOpen, ticket }) => {
               onChange={e => setDescription(e.target.value)}  
             />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <DropMenu className="formattedDropdown" title="Priority" items={priorityItems} current={1} value={priority} setValue={changePriority}/>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <DropMenu className="formattedDropdown" title="Status" items={statusItems} current={0} value={status} setValue={changeStatus}/>
+          <Grid item xs={12} md={12}>
+            <TextField className="formattedTextField"
+              id="image"
+              label="Image URL"
+              variant="outlined"
+              inputProps={{ maxLength: 120 }}
+              multiline
+              rows={2}
+              value={image}
+              onChange={e => setImage(e.target.value)}  
+            />
           </Grid>
           <Grid item xs={11} md={4}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -124,8 +86,8 @@ const EditTicket = ({ open, setOpen, ticket }) => {
                 disableToolbar
                 variant="inline"
                 format="MM/dd/yyyy"
-                id="due_date"
-                label="Due Date"
+                id="degin_date"
+                label="Begin Date"
                 value={date}
                 onChange={setDate}
                 className="formattedDatePicker"
@@ -139,10 +101,10 @@ const EditTicket = ({ open, setOpen, ticket }) => {
         <Grid container>
           <Grid item xs={1} md={2}></Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" variant="contained" color="primary">Update</Button>
+            <Button className="optionButton" variant="contained" color="secondary">Update</Button>
           </Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" variant="contained" onClick={close}>Cancel</Button>
+            <Button className="optionButton" onClick={close} variant="contained">Cancel</Button>
           </Grid>
         </Grid>
       </DialogContent>
@@ -150,4 +112,4 @@ const EditTicket = ({ open, setOpen, ticket }) => {
   );
 }
 
-export default EditTicket;
+export default EditProject;

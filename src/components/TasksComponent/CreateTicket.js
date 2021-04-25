@@ -93,7 +93,7 @@ const CreateTicket = ({ open, setOpen }) => {
           <Grid item xs={12} md={12}>
             <TextField className="formattedTextField"
               id="title"
-              label="Nombre"
+              label="Name"
               variant="outlined"
               inputProps={{ maxLength: 120 }}
               value={title}
@@ -103,7 +103,7 @@ const CreateTicket = ({ open, setOpen }) => {
           <Grid item xs={12} md={12}>
             <TextField className="formattedTextField"
               id="description"
-              label="Descripción"
+              label="Description"
               variant="outlined"
               inputProps={{ maxLength: 120 }}
               multiline
@@ -125,7 +125,7 @@ const CreateTicket = ({ open, setOpen }) => {
                 variant="inline"
                 format="MM/dd/yyyy"
                 id="due_date"
-                label="Fecha límite"
+                label="Due Date"
                 value={date}
                 onChange={setDate}
                 className="formattedDatePicker"
