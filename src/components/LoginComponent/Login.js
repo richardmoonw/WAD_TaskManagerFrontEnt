@@ -37,7 +37,7 @@ const Login = () => {
               Haz que tu gestión sea una tarea mucho más fácil con loopy.
             </p>
             <button className="desktopLoginButton">
-              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a href="" className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
+              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
             </button>
             <p className="mobileContact">Síguenos en <span className="mobileUser">@loopy</span> para más información</p>  
           </Grid> 
@@ -64,7 +64,7 @@ const Login = () => {
               Haz que tu gestión sea una tarea mucho más fácil con loopy.
             </p>
             <button className="mobileLoginButton">
-              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a href="" className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
+              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
             </button>
             <p className="mobileContact">Síguenos en <span className="mobileUser">@loopy</span> para más información</p>
         </div>
