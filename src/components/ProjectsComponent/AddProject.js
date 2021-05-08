@@ -6,16 +6,30 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { GrClose } from "react-icons/gr";
 import { IoCreateOutline } from "react-icons/io5";
+import axios from 'axios';
 
-const AddProject = ({ open, setOpen }) => {
+const AddProject = ({ open, setOpen, flag, setFlag }) => {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
   const [date, setDate] = useState(new Date());
 
   const close = () => {
     setOpen(false);
+  }
+
+  const handleAddition = () => {
+    axios.post('http://localhost:3000/projects', {
+      project: {
+        name: title,
+        description: description,
+        start_at: date
+      }
+    })
+    .then(() => {
+      setFlag(!flag)
+      setOpen(!open)
+    })
   }
 
   return (
@@ -68,18 +82,6 @@ const AddProject = ({ open, setOpen }) => {
               onChange={e => setDescription(e.target.value)}  
             />
           </Grid>
-          <Grid item xs={12} md={12}>
-            <TextField className="formattedTextField"
-              id="image"
-              label="Image URL"
-              variant="outlined"
-              inputProps={{ maxLength: 120 }}
-              multiline
-              rows={2}
-              value={image}
-              onChange={e => setImage(e.target.value)}  
-            />
-          </Grid>
           <Grid item xs={11} md={4}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
@@ -101,7 +103,7 @@ const AddProject = ({ open, setOpen }) => {
         <Grid container>
           <Grid item xs={1} md={2}></Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" variant="contained" color="secondary">Create</Button>
+            <Button className="optionButton" onClick={() => handleAddition()} variant="contained" color="secondary">Create</Button>
           </Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
             <Button className="optionButton" onClick={close} variant="contained">Cancel</Button>

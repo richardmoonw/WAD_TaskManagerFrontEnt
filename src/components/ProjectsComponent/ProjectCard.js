@@ -4,6 +4,7 @@ import { red } from '@material-ui/core/colors';
 import EditProject from './EditProject';
 import { useMediaQuery } from 'react-responsive';
 import { Card, Avatar, Grid , Typography, CardHeader, CardContent, CardMedia} from '@material-ui/core';
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProjectCard = (props) => {
-  const {avatar, title, date, description, image} = props;
+  const {avatar, id, title, date, description, image, flag, setFlag} = props;
   const classes = useStyles();
   const[open, setOpen] = useState(false);
 
@@ -28,6 +29,11 @@ const ProjectCard = (props) => {
   const isTabletOrSmartphone = useMediaQuery({
       query: '(max-width: 1355px)'
   });
+
+  const handleDelete = () => {
+    axios.delete(`http://localhost:3000/projects/${id}`)
+    .then(() => setFlag(!flag))
+  }
 
   return (
     <>
@@ -53,7 +59,7 @@ const ProjectCard = (props) => {
             </Typography>
           </CardContent>
           <button className="ticketButton" onClick={() => setOpen(true)}>EDIT</button>
-          <button className="ticketButton">DELETE</button>
+          <button className="ticketButton" onClick={() => handleDelete()}>DELETE</button>
       </Card>
     </Grid>
     }
@@ -79,13 +85,15 @@ const ProjectCard = (props) => {
             </Typography>
           </CardContent>
           <button className="ticketButton" onClick={() => setOpen(true)}>EDIT</button>
-          <button className="ticketButton">DELETE</button>
+          <button className="ticketButton" onClick={() => handleDelete()}>DELETE</button>
       </Card>
       </Grid>
     }
     <EditProject
       open={open}
       setOpen={setOpen}
+      flag={flag}
+      setFlag={setFlag}
       project={props}
     />
     </>

@@ -6,16 +6,30 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import { GrClose } from "react-icons/gr";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import axios from 'axios';
 
-const EditProject = ({ open, setOpen, project }) => {
+const EditProject = ({ open, setOpen, flag, setFlag, project }) => {
 
   const [title, setTitle] = useState(project.title);
   const [description, setDescription] = useState(project.description);
-  const [image, setImage] = useState(project.image);
   const [date, setDate] = useState(project.date);
 
   const close = () => {
     setOpen(false);
+  }
+
+  const handleUpdate = () => {
+    axios.put(`http://localhost:3000/projects/${project.id}`, {
+      project: {
+        name: title,
+        description: description,
+        start_at: date
+      }
+    })
+    .then(() => {
+      setFlag(!flag)
+      setOpen(!open)
+    })
   }
 
   return (
@@ -68,18 +82,6 @@ const EditProject = ({ open, setOpen, project }) => {
               onChange={e => setDescription(e.target.value)}  
             />
           </Grid>
-          <Grid item xs={12} md={12}>
-            <TextField className="formattedTextField"
-              id="image"
-              label="Image URL"
-              variant="outlined"
-              inputProps={{ maxLength: 120 }}
-              multiline
-              rows={2}
-              value={image}
-              onChange={e => setImage(e.target.value)}  
-            />
-          </Grid>
           <Grid item xs={11} md={4}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
@@ -101,7 +103,7 @@ const EditProject = ({ open, setOpen, project }) => {
         <Grid container>
           <Grid item xs={1} md={2}></Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" variant="contained" color="secondary">Update</Button>
+            <Button className="optionButton" onClick={() => handleUpdate()} variant="contained" color="secondary">Update</Button>
           </Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
             <Button className="optionButton" onClick={close} variant="contained">Cancel</Button>
