@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Column from './Column';
 import Navbar from '../NavbarComponent/Navbar';
 import { FormControl, Grid, IconButton, MenuItem, InputLabel, Select } from '@material-ui/core';
@@ -7,11 +7,16 @@ import './Tasks.css';
 import { useMediaQuery } from 'react-responsive';
 import CreateTicket from './CreateTicket';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Tasks = () => {
 
+  const { id } = useParams();
+
   const[status, setStatus] = useState("backlog")
+  const[tickets, setTickets] = useState([])
   const[open, setOpen] = useState(false);
+  const[flag, setFlag] = useState(false);
 
   const isDesktopOrLaptop = useMediaQuery({
     minDeviceWidth: 1366
@@ -24,6 +29,12 @@ const Tasks = () => {
   const handleStatus = (event) => {
     setStatus(event.target.value);
   };
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/projects/${id}/tasks`)
+    .then(response => setTickets(response.data))
+    .catch(response => console.log(response))
+  }, [flag]);
 
   return (
     <>
@@ -51,32 +62,32 @@ const Tasks = () => {
                 <Column
                   col_title='Backlog'
                   color="#969696"
-                  tickets={[{ id: 1, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }, { id: 3, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }]}
-                  project_id={"1"}
+                  tickets={tickets.filter(ticket => ticket.status === "Backlog")}
+                  project_id={id}
                 ></Column>
 
                 {/* Dev column */}
                 <Column
                   col_title='Selected for development'
                   color="#8c8eff"
-                  tickets={[{ id: 2, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
-                  project_id={"1"}
+                  tickets={tickets.filter(ticket => ticket.status === "Selected for development")}
+                  project_id={id}
                 ></Column>
 
                 {/* In progress column */}
                 <Column
                   col_title='In progress'
                   color="#ff8c90"
-                  tickets={[{ id: 4, title: "Hello", description: "Hello World", priority: "High", end_at: "04/16/2021" }]}
-                  project_id={"1"}
+                  tickets={tickets.filter(ticket => ticket.status === "In progress")}
+                  project_id={id}
                 ></Column>
 
                 {/* Done column */}
                 <Column
                   col_title='Done'
                   color="#63db81"
-                  tickets={[{ id: 5, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
-                  project_id={"1"}
+                  tickets={tickets.filter(ticket => ticket.status === "Done")}
+                  project_id={id}
                 ></Column>
               </Grid>
             </Grid>
@@ -123,32 +134,32 @@ const Tasks = () => {
                   <Column
                     col_title='Backlog'
                     color="#969696"
-                    tickets={[{ id: 1, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }, { id: 3, title: "Hello", description: "Hello World", priority: "Low", end_at: "04/16/2021" }]}
-                    project_id={"1"}
+                    tickets={tickets.filter(ticket => ticket.status === "Backlog")}
+                    project_id={id}
                   />
                 }
                 { status==="dev" &&
                   <Column
                     col_title='Selected for development'
                     color="#8c8eff"
-                    tickets={[{ id: 2, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
-                    project_id={"1"}
+                    tickets={tickets.filter(ticket => ticket.status === "Selected for development")}
+                    project_id={id}
                   ></Column>
                 }
                 { status==="doing" &&
                   <Column
                     col_title='In progress'
                     color="#ff8c90"
-                    tickets={[{ id: 4, title: "Hello", description: "Hello World", priority: "High", end_at: "04/16/2021" }]}
-                    project_id={"1"}
+                    tickets={tickets.filter(ticket => ticket.status === "In progress")}
+                    project_id={id}
                   ></Column>
                 }
                 { status==="done" &&
                   <Column
                     col_title='Done'
                     color="#63db81"
-                    tickets={[{ id: 5, title: "Hello", description: "Hello World", priority: "Medium", end_at: "04/16/2021" }]}
-                    project_id={"1"}
+                    tickets={tickets.filter(ticket => ticket.status === "Done")}
+                    project_id={id}
                   ></Column>
                 }
               </Grid>
@@ -158,7 +169,11 @@ const Tasks = () => {
       }
       <CreateTicket
         open={open}
-        setOpen={setOpen}>
+        setOpen={setOpen}
+        flag={flag}
+        setFlag={setFlag}
+        project_id={id}
+      >
       </CreateTicket>
     </>
   );

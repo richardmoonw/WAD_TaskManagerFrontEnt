@@ -45,7 +45,7 @@ const Ticket = (props) => {
                 }
               </Grid>
               <Grid item xs={9} md={9}>
-                <p className="ticketDueDate"><span className="ticketField ticketDate">DUE DATE:</span> {props.ticket.end_at}</p>
+                <p className="ticketDueDate"><span className="ticketField ticketDate">DUE DATE:</span> {props.ticket.end_at.slice(0,10)}</p>
               </Grid>
             </Grid>
           </Grid>
