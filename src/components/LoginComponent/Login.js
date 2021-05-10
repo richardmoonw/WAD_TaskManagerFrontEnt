@@ -5,6 +5,7 @@ import Logo from '../../assets/logo.webp';
 import MobileImage from '../../assets/index_image.webp';
 import DesktopImage from '../../assets/index_image_desktop.webp';
 import React from 'react';
+import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 
 
@@ -16,6 +17,11 @@ const Login = () => {
   const isTabletOrSmartphone = useMediaQuery({
     maxDeviceWidth: 1365
   });
+
+  const HandleLogin = () => {
+    axios.post("http://localhost:3000/auth/google_oauth2/")
+    .catch(err => console.log(err.response))
+  };
 
   return (
     <>
@@ -36,8 +42,8 @@ const Login = () => {
             <p className="desktopText">Somos una solución increíblemente fácil, flexible e intuitiva para administrar tus proyectos. 
               Haz que tu gestión sea una tarea mucho más fácil con loopy.
             </p>
-            <button className="desktopLoginButton">
-              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
+            <button onClick={() => HandleLogin()} className="desktopLoginButton">
+              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><span className="mobileLoginButtonText">SIGN IN WITH GOOGLE</span>
             </button>
             <p className="mobileContact">Síguenos en <span className="mobileUser">@loopy</span> para más información</p>  
           </Grid> 
@@ -64,7 +70,7 @@ const Login = () => {
               Haz que tu gestión sea una tarea mucho más fácil con loopy.
             </p>
             <button className="mobileLoginButton">
-              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><a className="mobileLoginButtonText">SIGN IN WITH GOOGLE</a>
+              <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><span className="mobileLoginButtonText">SIGN IN WITH GOOGLE</span>
             </button>
             <p className="mobileContact">Síguenos en <span className="mobileUser">@loopy</span> para más información</p>
         </div>
