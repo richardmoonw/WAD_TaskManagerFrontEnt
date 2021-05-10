@@ -14,11 +14,11 @@ ReactDOM.render(
         <Route exact path="/">
           <Login/>
         </Route>
-        <Route exact path="/tasks">
-          <Tasks/>
-        </Route>
         <Route exact path="/projects">
           <Projects/>
+        </Route>
+        <Route path="/projects/:id/tasks">
+          <Tasks/>
         </Route>
       </Switch>
     </BrowserRouter>

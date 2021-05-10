@@ -19,7 +19,7 @@ const Login = () => {
   });
 
   const HandleLogin = () => {
-    axios.post("http://localhost:3000/auth/google_oauth2/")
+    axios.post("http://localhost:3000/auth/google_oauth2")
     .catch(err => console.log(err.response))
   };
 
@@ -69,7 +69,7 @@ const Login = () => {
             <p className="mobileText">Somos una solución increíblemente fácil, flexible e intuitiva para administrar tus proyectos. 
               Haz que tu gestión sea una tarea mucho más fácil con loopy.
             </p>
-            <button className="mobileLoginButton">
+            <button onClick={() => HandleLogin()} className="mobileLoginButton">
               <AiFillGoogleCircle className="mobileLoginButtonIcon" size="2em"/><span className="mobileLoginButtonText">SIGN IN WITH GOOGLE</span>
             </button>
             <p className="mobileContact">Síguenos en <span className="mobileUser">@loopy</span> para más información</p>

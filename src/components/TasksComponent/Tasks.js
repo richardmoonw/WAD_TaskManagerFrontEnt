@@ -6,6 +6,7 @@ import { IoAddOutline } from "react-icons/io5";
 import './Tasks.css';
 import { useMediaQuery } from 'react-responsive';
 import CreateTicket from './CreateTicket';
+import { useParams } from 'react-router-dom';
 
 const Tasks = () => {
 

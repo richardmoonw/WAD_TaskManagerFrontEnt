@@ -50,7 +50,18 @@ const Projects = () => {
                             <Grid container spacing={2}>
                                 {
                                     projects.map(project => {
-                                        return <ProjectCard  key={project.id}  id={project.id} title={project.name} description={project.description} date={project.start_at.slice(0,10)} image={Logo} setFlag={setFlag}/>
+                                      return (
+                                        <ProjectCard 
+                                            key={project.id} 
+                                            id={project.id} 
+                                            title={project.name} 
+                                            description={project.description} 
+                                            date={project.start_at.slice(0,10)} 
+                                            image={Logo} 
+                                            flag={flag} 
+                                            setFlag={setFlag}
+                                          />
+                                      );
                                     })
                                 }
                             </Grid>
@@ -75,11 +86,22 @@ const Projects = () => {
                             </IconButton>
                         </Grid>
                         <Grid spacing={2} container>
-                                {
-                                    projects.map(project => {
-                                        return <ProjectCard  key={project.id} id={project.id} title={project.name} description={project.description} date={project.start_at.slice(0,10)} image={Logo} flag={flag} setFlag={setFlag}/>
-                                    })
-                                }
+                          {
+                            projects.map(project => {
+                              return (
+                                <ProjectCard 
+                                    key={project.id} 
+                                    id={project.id} 
+                                    title={project.name} 
+                                    description={project.description} 
+                                    date={project.start_at.slice(0,10)} 
+                                    image={Logo} 
+                                    flag={flag} 
+                                    setFlag={setFlag}
+                                  />
+                              )
+                            })
+                          }
                         </Grid>
                     </Grid>
                 </div>

@@ -39,6 +39,11 @@
     background-color: #f5f5f5;
 }
 
+.projectLink {
+  text-decoration: none;
+  color: black;
+}
+
 .ticketButton {
 	background-color: transparent;
 	border: none;
