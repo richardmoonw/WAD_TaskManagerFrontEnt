@@ -91,11 +91,6 @@
   font-weight: bold;
 }
 
-.underline {
-  border-bottom: 0.2rem solid #3d5a80;
-  padding-bottom: 0.5rem;
-}
-
 .mobileText {
   color: #717786;
   line-height: 1.1rem;
