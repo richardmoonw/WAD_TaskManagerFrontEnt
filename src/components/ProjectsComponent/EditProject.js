@@ -103,7 +103,7 @@ const EditProject = ({ open, setOpen, flag, setFlag, project }) => {
         <Grid container>
           <Grid item xs={1} md={2}></Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" onClick={() => handleUpdate()} variant="contained" color="secondary">Update</Button>
+            <Button className="optionButton" onClick={() => handleUpdate()} variant="contained" color="primary">Update</Button>
           </Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
             <Button className="optionButton" onClick={close} variant="contained">Cancel</Button>
