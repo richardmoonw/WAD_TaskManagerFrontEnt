@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import './Tasks.css';
 import { Grid, Card, CardContent } from '@material-ui/core';
 import EditTicket from './EditTicket';
+import axios from 'axios';
 
 const Ticket = (props) => {
   const [open, setOpen] = useState(false)
+  
+  const HandleDeletion = () => {
+    axios.delete(`http://localhost:3000/projects/${props.ticket.project_id}/tasks/${props.ticket.id}`)
+    .then(response => {
+      props.setFlag(!props.flag);
+    })
+    .catch(error => console.log(error));
+  }
 
   return(
     <>
@@ -21,12 +30,12 @@ const Ticket = (props) => {
                 <button onClick={() => setOpen(true)} className="ticketButton">EDIT</button>
               </Grid>
               <Grid item>
-                <button className="ticketButton">DELETE</button>
+                <button onClick={() => HandleDeletion()} className="ticketButton">DELETE</button>
               </Grid>
             </Grid>
 
             {/* Ticket title */}
-            <p className="ticketTitle">{props.ticket.title}</p>
+            <p className="ticketTitle">{props.ticket.name}</p>
             
 
             {/* Priority, description and date */}
@@ -58,6 +67,8 @@ const Ticket = (props) => {
         open={open}
         setOpen={setOpen}
         ticket={props.ticket}
+        flag={props.flag}
+        setFlag={props.setFlag}
       />
     </>
   );
