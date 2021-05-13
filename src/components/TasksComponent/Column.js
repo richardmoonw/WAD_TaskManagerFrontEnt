@@ -33,6 +33,8 @@ const Column = (props) => {
                 <Ticket
                 key={ticket.id}
                 ticket={ticket}
+                flag={props.flag}
+                setFlag={props.setFlag}
                 />
                 )
               })}
@@ -49,6 +51,8 @@ const Column = (props) => {
                 <Ticket
                   key={ticket.id}
                   ticket={ticket}
+                  flag={props.flag}
+                  setFlag={props.setFlag}
                 />
                 )
               })}

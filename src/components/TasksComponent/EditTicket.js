@@ -7,59 +7,37 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import { GrClose } from "react-icons/gr";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import DropMenu from './DropMenu';
+import axios from 'axios';
 
-const priorityItems = [
-  {
-    id: 1,
-    name: 'High'
-  },
-  {
-    id: 2,
-    name: 'Medium'
-  },
-  {
-    id: 3,
-    name: 'Low'
-  },
-]
+const priorityItems = ['High', 'Medium', 'Low']
+const statusItems = ['Backlog', 'Selected for development', 'In progress', 'Done']
 
-const statusItems = [
-  {
-    id: 1,
-    name: 'Backlog'
-  },
-  {
-    id: 2,
-    name: 'Selected for development'
-  },
-  {
-    id: 3,
-    name: 'In progress'
-  },
-  {
-    id: 4,
-    name: 'Done'
-  },
-]
+const EditTicket = ({ open, setOpen, ticket, flag, setFlag }) => {
 
-const EditTicket = ({ open, setOpen, ticket }) => {
-
-  const [title, setTitle] = useState(ticket.title);
+  const [title, setTitle] = useState(ticket.name);
   const [description, setDescription] = useState(ticket.description);
   const [priority, setPriority] = useState(priorityItems.find(x => x === ticket.priority));
   const [status, setStatus] = useState(statusItems.find(x => x === ticket.status));
   const [date, setDate] = useState(ticket.end_at);
 
-  const changePriority = (value) => {
-    setPriority(value)
-  }
-
-  const changeStatus = (value) => {
-    setStatus(value)
-  }
-
   const close = () => {
     setOpen(false);
+  }
+
+  const handleUpdate = () => {
+    axios.put(`http://localhost:3000/projects/${ticket.project_id}/tasks/${ticket.id}`, {
+      task: {
+        name: title,
+        description: description,
+        priority: priority,
+        status: status,
+        end_at: date
+      }
+    })
+    .then(() => {
+      setFlag(!flag)
+      setOpen(!open)
+    })
   }
 
   return (
@@ -113,10 +91,10 @@ const EditTicket = ({ open, setOpen, ticket }) => {
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <DropMenu className="formattedDropdown" title="Priority" items={priorityItems} current={1} value={priority} setValue={changePriority}/>
+          <DropMenu className="formattedDropdown" title="Priority" items={priorityItems} value={priority} setValue={setPriority}/>
           </Grid>
           <Grid item xs={12} md={4}>
-            <DropMenu className="formattedDropdown" title="Status" items={statusItems} current={0} value={status} setValue={changeStatus}/>
+          <DropMenu className="formattedDropdown" title="Status" items={statusItems}  value={status} setValue={setStatus}/>
           </Grid>
           <Grid item xs={11} md={4}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -139,7 +117,7 @@ const EditTicket = ({ open, setOpen, ticket }) => {
         <Grid container>
           <Grid item xs={1} md={2}></Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
-            <Button className="optionButton" variant="contained" color="primary">Update</Button>
+            <Button onClick={() => handleUpdate()} className="optionButton" variant="contained" color="primary">Update</Button>
           </Grid>
           <Grid className="centeredContainer" item xs={5} md={4}>
             <Button className="optionButton" variant="contained" onClick={close}>Cancel</Button>

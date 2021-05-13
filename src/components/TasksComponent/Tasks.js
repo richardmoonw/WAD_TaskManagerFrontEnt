@@ -17,6 +17,7 @@ const Tasks = () => {
   const[tickets, setTickets] = useState([])
   const[open, setOpen] = useState(false);
   const[flag, setFlag] = useState(false);
+  const[project, setProject] = useState("");
 
   const isDesktopOrLaptop = useMediaQuery({
     minDeviceWidth: 1366
@@ -29,6 +30,12 @@ const Tasks = () => {
   const handleStatus = (event) => {
     setStatus(event.target.value);
   };
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/projects/${id}`)
+    .then(response => setProject(response.data))
+    .catch(response => console.log(response))
+  }, []);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/projects/${id}/tasks`)
@@ -46,7 +53,7 @@ const Tasks = () => {
             <Grid item md={10}>
               <Grid container>
                 <Grid item md={11}>
-                  <p className="title">Title</p>
+                  <p className="title">{project.name}</p>
                 </Grid>
                 <Grid className="centeredContainer" item md={1}>
                   <IconButton className="addButton" onClick={() => setOpen(true)}>
@@ -64,6 +71,8 @@ const Tasks = () => {
                   color="#969696"
                   tickets={tickets.filter(ticket => ticket.status === "Backlog")}
                   project_id={id}
+                  flag={flag}
+                  setFlag={setFlag}
                 ></Column>
 
                 {/* Dev column */}
@@ -72,6 +81,8 @@ const Tasks = () => {
                   color="#8c8eff"
                   tickets={tickets.filter(ticket => ticket.status === "Selected for development")}
                   project_id={id}
+                  flag={flag}
+                  setFlag={setFlag}
                 ></Column>
 
                 {/* In progress column */}
@@ -80,6 +91,8 @@ const Tasks = () => {
                   color="#ff8c90"
                   tickets={tickets.filter(ticket => ticket.status === "In progress")}
                   project_id={id}
+                  flag={flag}
+                  setFlag={setFlag}
                 ></Column>
 
                 {/* Done column */}
@@ -88,6 +101,8 @@ const Tasks = () => {
                   color="#63db81"
                   tickets={tickets.filter(ticket => ticket.status === "Done")}
                   project_id={id}
+                  flag={flag}
+                  setFlag={setFlag}
                 ></Column>
               </Grid>
             </Grid>
@@ -103,7 +118,7 @@ const Tasks = () => {
             <div className="mobileTasksComponent">
               <Grid container>
                 <Grid item xs={11}>
-                  <p className="title">Title</p>
+                  <p className="title">{project.name}</p>
                 </Grid>
                 <Grid style={{textAlign: "right"}} item xs={1}>
                   <IconButton className="addButton" onClick={() => setOpen(true)}>
@@ -136,6 +151,8 @@ const Tasks = () => {
                     color="#969696"
                     tickets={tickets.filter(ticket => ticket.status === "Backlog")}
                     project_id={id}
+                    flag={flag}
+                    setFlag={setFlag}
                   />
                 }
                 { status==="dev" &&
@@ -144,6 +161,8 @@ const Tasks = () => {
                     color="#8c8eff"
                     tickets={tickets.filter(ticket => ticket.status === "Selected for development")}
                     project_id={id}
+                    flag={flag}
+                    setFlag={setFlag}
                   ></Column>
                 }
                 { status==="doing" &&
@@ -152,6 +171,8 @@ const Tasks = () => {
                     color="#ff8c90"
                     tickets={tickets.filter(ticket => ticket.status === "In progress")}
                     project_id={id}
+                    flag={flag}
+                    setFlag={setFlag}
                   ></Column>
                 }
                 { status==="done" &&
@@ -160,6 +181,8 @@ const Tasks = () => {
                     color="#63db81"
                     tickets={tickets.filter(ticket => ticket.status === "Done")}
                     project_id={id}
+                    flag={flag}
+                    setFlag={setFlag}
                   ></Column>
                 }
               </Grid>
