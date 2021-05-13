@@ -56,18 +56,6 @@ const Navbar = ({module}) => {
                         >Projects</Button>
                     </Link>
                 }
-              
-                { module === "projects" && 
-                    <Link className="formattedLink" to="/tasks">
-                      <Button
-                        className="navbarButton" 
-                        variant="contained"
-                        color="primary"
-                        startIcon={<AiOutlineAppstore className="buttonIcon" />}
-                        >Tasks</Button>
-                    </Link>
-                    
-                }
                 <Link className="formattedLink" to="/">
                   <Button 
                     className="navbarButton" 
